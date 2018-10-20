@@ -24,7 +24,7 @@
             @if(Auth::guest())
                 <div class="navbar-item">
                     <div class="buttons">
-                        <a href="{{ route('login') }}" class="button is-primary">Login</a>
+                        <a href="{{ route('login') }}" class="button is-success">Login</a>
                         <a href="{{ route('register') }}" class="button is-light">Join the Community</a>
                     </div>
                 </div>
@@ -33,19 +33,33 @@
                     Hey {{ Auth::user()->name }}
                     <span class="icon"><i class="fa fa-caret-down"></i></span>
                     <ul class="dropdown-menu">
-                        <li><a href="#">
-                                <span class="icon"><i class="fa fa-fw m-r-10 fa-user-circle-o"></i></span>
-                                Profile</a></li>
-                        <li><a href="#">
-                                <span class="icon"><i class="fa fa-fw m-r-10 fa-bell"></i></span>
-                                Notifications</a></li>
-                        <li><a href="#">
-                                <span class="icon"><i class="fa fa-fw m-r-10 fa-cog"></i></span>
-                                Settings</a></li>
+                        <li>
+                            <a href="#">
+                                <span class="icon"><i class="fa fa-fw m-r-5 fa-user-circle-o"></i></span>
+                                Profile
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="icon"><i class="fa fa-fw m-r-5 fa-bell"></i></span>
+                                Notifications
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('manage.dashboard') }}">
+                                <span class="icon"><i class="fa fa-fw m-r-5 fa-cog"></i></span>
+                                Manage
+                            </a>
+                        </li>
                         <li class="separator"></li>
-                        <li><a href="#">
-                                <span class="icon"><i class="fa fa-fw m-r-10 fa-sign-out"></i></span>
-                                Logout</a></li>
+                        <li>
+                            <a href="{{ route('logout') }}"
+                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <span class="icon"><i class="fa fa-fw m-r-5 fa-sign-out"></i></span>
+                                Logout
+                            </a>
+                            @include('_includes.forms.logout')
+                        </li>
                     </ul>
                 </button>
             @endif
